@@ -19,3 +19,19 @@ Webcam.attach("camera");
  function modelLoaded(){
      console.log("modelLoaded");
  }
+
+ function check(){
+     img = document.getElementById("captured_image");
+     classify.classify(img, sort);
+ }
+
+ function sort(error, results){
+     if(error){
+         console.log(error);
+     }
+     else{
+         console.log(results);
+         document.getElementById("result_object_name").innerHTML = results[0].label;
+         document.getElementById("result_object_accuracy").innerHTML = results[0].confidence.toFixed(4);
+     }
+ }
